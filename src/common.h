@@ -116,8 +116,11 @@ struct Transaction {
           added_cycle(tran.added_cycle),
           complete_cycle(tran.complete_cycle),
           is_write(tran.is_write) {}
-    void print() {
-        std::cout << std::hex << addr << std::dec << " " << is_write << " ";
+    void print(Address &addr_map) {
+        std::cout << std::hex << addr << std::dec << " ";
+        std::cout << addr_map.channel << " " << addr_map.rank << " " << addr_map.bankgroup << " " <<
+            addr_map.bank << " " << addr_map.row << " " << addr_map.column << " ";
+        std::cout << is_write << " ";
         std::cout << added_cycle << " " << complete_cycle << " " << (complete_cycle - added_cycle);
         std::cout << "\n";
     };

@@ -53,7 +53,8 @@ std::pair<uint64_t, int> Controller::ReturnDoneTrans(uint64_t clk) {
                 simple_stats_.AddValue("read_latency", clk_ - it->added_cycle);
                 // TODO write this to a file
                 // std::cout << (clk_ - it->added_cycle) << "\n";
-                it->print();
+                Address addr_map = config_.AddressMapping(it->addr);
+                it->print(addr_map);
             }
             auto pair = std::make_pair(it->addr, it->is_write);
             it = return_queue_.erase(it);
@@ -262,7 +263,7 @@ void Controller::IssueCommand(const Command &cmd) {
         auto wr_lat = clk_ - it->second.added_cycle + config_.write_delay;
         simple_stats_.AddValue("write_latency", wr_lat);
         // std::cout << wr_lat << "\n";
-        it->second.print();
+        // it->second.print();
         pending_wr_q_.erase(it);
     }
     // must update stats before states (for row hits)
