@@ -50,6 +50,8 @@ int main(int argc, const char **argv) {
     std::string trace_file = args::get(trace_file_arg);
     std::string stream_type = args::get(stream_arg);
 
+    // std::cout << output_dir << " " << trace_file << "\n";
+
     CPU *cpu;
     if (!trace_file.empty()) {
         cpu = new TraceBasedCPU(config_file, output_dir, trace_file);

@@ -116,6 +116,11 @@ struct Transaction {
           added_cycle(tran.added_cycle),
           complete_cycle(tran.complete_cycle),
           is_write(tran.is_write) {}
+    void print() {
+        std::cout << std::hex << addr << std::dec << " " << is_write << " ";
+        std::cout << added_cycle << " " << complete_cycle << " " << (complete_cycle - added_cycle);
+        std::cout << "\n";
+    };
     uint64_t addr;
     uint64_t added_cycle;
     uint64_t complete_cycle;
