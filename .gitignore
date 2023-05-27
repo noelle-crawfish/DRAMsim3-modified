@@ -46,3 +46,8 @@ release
 
 # IDEs / Editors
 .vscode/
+
+# Large data and outputs
+traces/*.memtrace
+traces/*.trace
+traces/*.gz
